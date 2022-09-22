@@ -1,2 +1,2 @@
 # ToDoList_react
-making todoList with react 
+Making TodoList with React 
