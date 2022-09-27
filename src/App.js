@@ -25,8 +25,7 @@ function App() {
           type="text"
           placeholder="put your to do list"
         ></input>
-        <Button />
-
+        <Button text={toDo} />
         <ul></ul>
       </form>
     </div>
