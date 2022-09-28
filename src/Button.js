@@ -2,7 +2,7 @@ import { useState } from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 
-function Button() {
+function Button(prop) {
   const [todoSpan, setSpanList] = useState([]);
 
   const Span = () => {
@@ -16,3 +16,5 @@ function Button() {
 }
 
 export default Button;
+
+// prop.todo
