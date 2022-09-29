@@ -6,11 +6,12 @@ function Button(prop) {
   const [todoSpan, setSpanList] = useState([]);
 
   const Span = () => {
-    return <span />;
+    return <span>{prop.toDo}</span>;
   };
 
   const onAddBtnClick = (event) => {
     setSpanList(todoSpan.concat(<Span key={todoSpan.length} />));
+    console.log(prop.todo);
   };
   return <button onClick={onAddBtnClick}>Add</button>;
 }
