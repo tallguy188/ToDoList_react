@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 
 function Button(prop) {
-  const [todoSpan, setSpanList] = useState([]);
+  /* const [todoSpan, setSpanList] = useState([]);
 
   const Span = () => {
     return <span>{prop.toDo}</span>;
@@ -12,8 +12,8 @@ function Button(prop) {
   const onAddBtnClick = (event) => {
     setSpanList(todoSpan.concat(<Span key={todoSpan.length} />));
     console.log(prop.todo);
-  };
-  return <button onClick={onAddBtnClick}>Add</button>;
+  }; */
+  return <button>Add</button>;
 }
 
 export default Button;

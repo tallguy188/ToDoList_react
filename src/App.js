@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 
 function App() {
   const [toDo, settoDo] = useState("");
-
+  const [toDos, settoDos] = useState([]);
   const onChange = (event) => {
     settoDo(event.target.value);
   };
@@ -13,6 +13,7 @@ function App() {
     event.preventDefault();
     console.log(toDo);
     settoDo("");
+    settoDos((nowArray) => [toDo, ...nowArray]);
   };
 
   return (
@@ -26,7 +27,15 @@ function App() {
           placeholder="put your to do list"
         ></input>
         <Button text={toDo} />
-        <ul></ul>
+        <hr></hr>
+        <ul>
+          {toDos.map((todo, index) => (
+            <button>
+              📌
+              <li key={index}>{todo}</li>
+            </button>
+          ))}
+        </ul>
       </form>
     </div>
   );
