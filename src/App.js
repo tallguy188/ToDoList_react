@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 import ReactDOM from "react-dom";
+import "./App.css";
 
 function App() {
   const [toDo, settoDo] = useState("");
@@ -11,9 +12,15 @@ function App() {
 
   const onSubmit = (event) => {
     event.preventDefault();
+    event.stopPropagation();
     console.log(toDo);
     settoDo("");
     settoDos((nowArray) => [toDo, ...nowArray]);
+    console.log(event);
+  };
+
+  const onClick = (event) => {
+    event.preventDefault();
   };
 
   return (
@@ -26,12 +33,11 @@ function App() {
           type="text"
           placeholder="put your to do list"
         ></input>
-        <Button text={toDo} />
+        <Button />
         <hr></hr>
         <ul>
           {toDos.map((todo, index) => (
-            <button>
-              📌
+            <button key={index}>
               <li key={index}>{todo}</li>
             </button>
           ))}
