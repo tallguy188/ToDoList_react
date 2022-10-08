@@ -10,17 +10,17 @@ function App() {
     settoDo(event.target.value);
   };
 
+  const handleButtonClick = (event) => {
+    event.preventDefault();
+  };
+
   const onSubmit = (event) => {
     event.preventDefault();
-    event.stopPropagation();
+
     console.log(toDo);
     settoDo("");
     settoDos((nowArray) => [toDo, ...nowArray]);
     console.log(event);
-  };
-
-  const onClick = (event) => {
-    event.preventDefault();
   };
 
   return (
@@ -37,7 +37,7 @@ function App() {
         <hr></hr>
         <ul>
           {toDos.map((todo, index) => (
-            <button key={index}>
+            <button key={index} onClick={handleButtonClick}>
               <li key={index}>{todo}</li>
             </button>
           ))}
