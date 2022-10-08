@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Button from "./Button";
 import ReactDOM from "react-dom";
 import "./App.css";
 
 function App() {
   const [toDo, settoDo] = useState("");
-  const [toDos, settoDos] = useState([]);
+  const [toDos, settoDos] = useState([
+    {
+      id: 1,
+      text: "todo 만들기",
+    },
+  ]);
   const onChange = (event) => {
     settoDo(event.target.value);
   };
@@ -16,12 +21,19 @@ function App() {
 
   const onSubmit = (event) => {
     event.preventDefault();
-
     console.log(toDo);
+    settoDos([
+      ...toDos,
+      {
+        id: toDos[toDos.length - 1].id + 1,
+        text: toDo,
+      },
+    ]);
     settoDo("");
-    settoDos((nowArray) => [toDo, ...nowArray]);
-    console.log(event);
+    console.log(toDos);
   };
+
+  /* const onClear = (event) => {}; */
 
   return (
     <div>
@@ -37,9 +49,12 @@ function App() {
         <hr></hr>
         <ul>
           {toDos.map((todo, index) => (
-            <button key={index} onClick={handleButtonClick}>
-              <li key={index}>{todo}</li>
-            </button>
+            <li key={index}>
+              <button onClick={handleButtonClick}>📌</button>
+              <button key={index} onClick={handleButtonClick}>
+                {todo.text}
+              </button>
+            </li>
           ))}
         </ul>
       </form>
