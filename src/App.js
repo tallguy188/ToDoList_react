@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState, useCallback } from "react";
 import Button from "./Button";
 import ReactDOM from "react-dom";
 import "./App.css";
@@ -15,10 +15,6 @@ function App() {
     settoDo(event.target.value);
   };
 
-  const handleButtonClick = (event) => {
-    event.preventDefault();
-  };
-
   const onSubmit = (event) => {
     event.preventDefault();
     console.log(toDo);
@@ -30,10 +26,11 @@ function App() {
       },
     ]);
     settoDo("");
-    console.log(toDos);
   };
 
-  /* const onClear = (event) => {}; */
+  const onRemove = (id) => {
+    console.log(id);
+  };
 
   return (
     <div>
@@ -47,17 +44,19 @@ function App() {
         ></input>
         <Button />
         <hr></hr>
-        <ul>
-          {toDos.map((todo, index) => (
-            <li key={index}>
-              <button onClick={handleButtonClick}>📌</button>
-              <button key={index} onClick={handleButtonClick}>
-                {todo.text}
-              </button>
-            </li>
-          ))}
-        </ul>
       </form>
+      <ul>
+        {toDos.map((todo, index) => (
+          <li key={index}>
+            <button key={index}>
+              <span role="img" aria-label="pin">
+                📌
+              </span>
+              {todo.text}
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
