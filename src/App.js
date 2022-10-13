@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import Button from "./Button";
+import Trash from "./Trash";
 import ReactDOM from "react-dom";
 import "./App.css";
 
@@ -57,6 +58,7 @@ function App() {
           </li>
         ))}
       </ul>
+      <Trash />
     </div>
   );
 }
