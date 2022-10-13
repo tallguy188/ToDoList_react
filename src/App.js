@@ -29,7 +29,7 @@ function App() {
   };
 
   const onRemove = (id) => {
-    console.log(id);
+    settoDos((toDos) => toDos.filter((toDo) => toDo.id !== id));
   };
 
   return (
@@ -48,7 +48,7 @@ function App() {
       <ul>
         {toDos.map((todo, index) => (
           <li key={index}>
-            <button key={index}>
+            <button key={index} onClick={() => onRemove(todo.id)}>
               <span role="img" aria-label="pin">
                 📌
               </span>
