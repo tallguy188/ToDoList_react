@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import Button from "./Button";
 import Trash from "./Trash";
 import ReactDOM from "react-dom";
@@ -10,6 +10,13 @@ function App() {
     {
       id: 1,
       text: "todo 만들기",
+    },
+  ]);
+
+  const [trash, setTrash] = useState([
+    {
+      id: 1,
+      text: "",
     },
   ]);
   const onChange = (event) => {
@@ -31,10 +38,11 @@ function App() {
 
   const onRemove = (id) => {
     settoDos((toDos) => toDos.filter((toDo) => toDo.id !== id));
+    setTrash((toDos) => toDos.filter((toDo) => toDo.id === id));
   };
 
   return (
-    <div>
+    <div className="all">
       <h1>My to do list</h1>
       <form onSubmit={onSubmit}>
         <input
@@ -58,7 +66,7 @@ function App() {
           </li>
         ))}
       </ul>
-      <Trash />
+      <Trash setTrash={setTrash} trash={trash} />
     </div>
   );
 }
