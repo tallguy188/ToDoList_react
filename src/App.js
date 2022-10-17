@@ -12,13 +12,14 @@ function App() {
       text: "todo 만들기",
     },
   ]);
-
-  const [trash, setTrash] = useState([
+  const [trash, setTrash] = useState("");
+  const [todoTrash, settodoTrash] = useState([
     {
       id: 1,
       text: "",
     },
   ]);
+
   const onChange = (event) => {
     settoDo(event.target.value);
   };
@@ -66,7 +67,7 @@ function App() {
           </li>
         ))}
       </ul>
-      <Trash setTrash={setTrash} trash={trash} />
+      <Trash settodoTrash={settodoTrash} todotrash={todoTrash} />
     </div>
   );
 }

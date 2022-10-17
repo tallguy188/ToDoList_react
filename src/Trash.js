@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Trash.css";
-function Trash({ setTrash, trash }) {
+function Trash({ settodoTrash, todotrash }) {
   return (
     <div className="can">
       <span className="canimg" role="img" aria-label="trash">
@@ -8,7 +8,7 @@ function Trash({ setTrash, trash }) {
       </span>
       <div>
         <ul>
-          {trash.map((todo, index) => (
+          {todotrash.map((todo, index) => (
             <li key={index}>
               <button key={index}>{todo.text}</button>
             </li>
